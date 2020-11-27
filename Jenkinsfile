@@ -9,7 +9,7 @@ pipeline{
         PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin"
         GIT_VERSION="latest"
         def dockerfile = 'test.dockerfile'
- #       def testImage = docker.build("test:${env.BUILD_ID}", "/root/argo-cd-hello-world-app-master/")
+ //       def testImage = docker.build("test:${env.BUILD_ID}", "/root/argo-cd-hello-world-app-master/")
     }
     
     parameters {
@@ -57,10 +57,10 @@ pipeline{
 
                 dir("${env.WORKSPACE}"){
                     sh """
-#                     def dockerfile = 'test.dockerfile'
-#                     def testImage = docker.build("test:${env.BUILD_ID}", "/root/argo-cd-hello-world-app-master/")
-#                    docker build . -t test:$build_number -f /root/argo-cd-hello-world-app-master/test.dockerfile
-#                    docker.build("test:${env.BUILD_ID}", "/root/argo-cd-hello-world-app-master/")   
+//                     def dockerfile = 'test.dockerfile'
+//                     def testImage = docker.build("test:${env.BUILD_ID}", "/root/argo-cd-hello-world-app-master/")
+//                    docker build . -t test:$build_number -f /root/argo-cd-hello-world-app-master/test.dockerfile
+//                    docker.build("test:${env.BUILD_ID}", "/root/argo-cd-hello-world-app-master/")   
                    testImage.inside {
                     sh 'make test'
                     }
