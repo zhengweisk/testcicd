@@ -2,7 +2,7 @@
 
 pipeline{
     agent {node {label 'master'}}
-    
+    def GIT_VERSION=$(git rev-parse HEAD)
     environment {
         PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin"
     }
@@ -51,7 +51,7 @@ pipeline{
             steps{
                 dir("${env.WORKSPACE}"){
                     sh """
-                    docker build . -t test -f /root/argo-cd-hello-world-app-master/test.dockerfile
+                    docker build . -t test:$GIT_VERSION -f /root/argo-cd-hello-world-app-master/test.dockerfile
                     """
                 }
             }
