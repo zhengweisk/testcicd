@@ -8,7 +8,7 @@ pipeline{
 
     environment {
         PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin"
-        GIT_VERSION=$(git rev-parse HEAD)
+        GIT_VERSION="latest"
     }
     
     parameters {
@@ -55,7 +55,7 @@ pipeline{
             steps{
                 dir("${env.WORKSPACE}"){
                     sh """
-                    docker build . -t test -f /root/argo-cd-hello-world-app-master/test.dockerfile
+                    docker build . -t test:$GIT_VERSION -f /root/argo-cd-hello-world-app-master/test.dockerfile
                     node --version
                     """
                 }
