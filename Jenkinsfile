@@ -21,7 +21,7 @@ pipeline{
             steps{
                 sh 'git config --global http.sslVerify false'
                 dir("${env.WORKSPACE}"){
-                    git branch: 'master', credentialsId: "", url: "https://"
+                    git branch: 'master', credentialsId: "", url: "https://github.com/zhengweisk/hello.git"
                 }
             }
         }
@@ -41,14 +41,7 @@ pipeline{
             steps{
                 dir("${env.WORKSPACE}"){
                     sh """
-                    echo "[INFO] Check test properties"
-                    if [ -s test.properties ]
-                    then
-                        cat test.properties
-                        echo "[INFO] Done..."
-                    else
-                        echo "test.propreties is empty"
-                    fi
+                    echo "check test properties!"
                     """
                     echo "[INFO] Build finished..."
                 }
