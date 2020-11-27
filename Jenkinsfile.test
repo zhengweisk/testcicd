@@ -10,7 +10,7 @@ pipeline{
         PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin"
         GIT_VERSION="latest"
     }
-    steps{
+stages{
     stage("go"){
             steps{
                 dir("${env.WORKSPACE}"){
@@ -20,7 +20,7 @@ pipeline{
                 }
             }
         }
-    }
+}
     post {
         always {
             cleanWs()
