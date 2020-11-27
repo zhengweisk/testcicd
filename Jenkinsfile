@@ -55,9 +55,12 @@ pipeline{
             steps{
 
                 dir("${env.WORKSPACE}"){
-                    script {
-                        docker.build("test:${env.BUILD_ID}", "/root/argo-cd-hello-world-app-master/")
-                }
+//                    script {
+//                        docker.build("test:${env.BUILD_ID}", "/root/argo-cd-hello-world-app-master/") prod
+//                }
+            sh '''
+            docker build . -t test:$build_number -f /root/argo-cd-hello-world-app-master/test.dockerfile
+            '''
                 }
             }
         }
