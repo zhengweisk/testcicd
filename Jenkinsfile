@@ -59,7 +59,7 @@ pipeline{
 //                        docker.build("test:${env.BUILD_ID}","/root/argo-cd-hello-world-app-master/")
 //                }
            sh '''
-           docker build . -t 643690352380.dkr.ecr.us-east-1.amazonaws.com/hello:$build_number -f /root/argo-cd-hello-world-app-master/test.dockerfile
+           docker build . -t 643690352380.dkr.ecr.us-east-1.amazonaws.com/hello:$BUILD_NUMBER -f /root/argo-cd-hello-world-app-master/test.dockerfile
            '''
                 }
             }
