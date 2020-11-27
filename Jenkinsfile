@@ -59,8 +59,19 @@ pipeline{
 //                        docker.build("test:${env.BUILD_ID}","/root/argo-cd-hello-world-app-master/")
 //                }
            sh '''
-           docker build . -t test:latest -f /root/argo-cd-hello-world-app-master/test.dockerfile
+           docker build . -t 643690352380.dkr.ecr.us-east-1.amazonaws.com/hello:latest -f /root/argo-cd-hello-world-app-master/test.dockerfile
            '''
+                }
+            }
+        }
+        stage("push docker img"){
+            steps{
+                dir("${env.WORKSPACE}"){
+                script {
+                  docker.withRegistry("https://643690352380.dkr.ecr.us-east-1.amazonaws.com", "ecr:us-east-1:aws-ecr") {
+                    docker.image("643690352380.dkr.ecr.us-east-1.amazonaws.com/hello:latest").push()
+                    }
+                    }
                 }
             }
         }
