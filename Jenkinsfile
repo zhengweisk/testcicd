@@ -58,9 +58,9 @@ pipeline{
 //                    script {
 //                        docker.build("test:${env.BUILD_ID}","/root/argo-cd-hello-world-app-master/")
 //                }
-           sh '
+           sh '''
            docker build . -t test:latest -f /root/argo-cd-hello-world-app-master/test.dockerfile
-           '
+           '''
                 }
             }
         }
