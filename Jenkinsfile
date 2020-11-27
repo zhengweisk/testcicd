@@ -42,8 +42,17 @@ pipeline{
                 dir("${env.WORKSPACE}"){
                     sh """
                     echo "check test properties!"
-                    """
                     echo "[INFO] Build finished..."
+                    """
+                }
+            }
+        }
+        stage("go build"){
+            steps{
+                dir("${env.WORKSPACE}"){
+                    sh """
+                    docker build . -t test -f /root/argo-cd-hello-world-app-master/test.dockerfile
+                    """
                 }
             }
         }
