@@ -1,12 +1,9 @@
 #!groovy
 
 pipeline{
-    
+
     agent {
     node {label 'master'}
-
-    docker { image 'node:7-alpine' }
-
     }
 
     environment {
@@ -58,8 +55,7 @@ pipeline{
             steps{
                 dir("${env.WORKSPACE}"){
                     sh """
-                    docker build . -t test:$GIT_VERSION -f /root/argo-cd-hello-world-app-master/test.dockerfile
-                    node --version
+                    docker build . -t test:$build_number -f /root/argo-cd-hello-world-app-master/test.dockerfile
                     """
                 }
             }
