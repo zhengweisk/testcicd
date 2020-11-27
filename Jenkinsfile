@@ -69,7 +69,7 @@ pipeline{
                 dir("${env.WORKSPACE}"){
                 script {
                   docker.withRegistry("https://643690352380.dkr.ecr.us-east-1.amazonaws.com", "ecr:us-east-1:aws-ecr") {
-                    docker.image("643690352380.dkr.ecr.us-east-1.amazonaws.com/hello",":$BUILD_NUMBER").push()
+                    docker.image("643690352380.dkr.ecr.us-east-1.amazonaws.com/hello:$BUILD_NUMBER").push()
                     }
                     }
                 }
