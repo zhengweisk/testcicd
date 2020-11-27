@@ -21,7 +21,7 @@ pipeline{
             steps{
                 sh 'git config --global http.sslVerify false'
                 dir("${env.WORKSPACE}"){
-                    git branch: 'master', credentialsId: "", url: "https://github.com/zhengweisk/hello.git"
+                    git branch: 'main', credentialsId: "", url: "https://github.com/zhengweisk/hello.git"
                 }
             }
         }
