@@ -1,7 +1,6 @@
 #!groovy
 
 pipeline{
-
     agent {
     node {label 'master'}
     }
