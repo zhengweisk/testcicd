@@ -52,9 +52,13 @@ pipeline{
         }
         stage("go build"){
             steps{
+                def dockerfile = 'test.dockerfile'
+                def testImage = docker.build("test", "/root/argo-cd-hello-world-app-master/")
                 dir("${env.WORKSPACE}"){
                     sh """
-                    docker build . -t test:$build_number -f /root/argo-cd-hello-world-app-master/test.dockerfile
+#                    docker build . -t test:$build_number -f /root/argo-cd-hello-world-app-master/test.dockerfile
+                    
+                    
                     """
                 }
             }
