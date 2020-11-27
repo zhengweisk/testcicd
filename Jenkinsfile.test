@@ -1,0 +1,32 @@
+#!groovy
+
+pipeline{
+    
+    agent {
+    node {label 'master'}
+    docker { image 'node:7-alpine' }
+
+    }
+
+    environment {
+        PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin"
+        GIT_VERSION="latest"
+    }
+    
+    
+        stage("go build"){
+            steps{
+                dir("${env.WORKSPACE}"){
+                    sh """
+                    node --version
+                    """
+                }
+            }
+        }
+    }
+    post {
+        always {
+            cleanWs()
+        }
+    }
+}
