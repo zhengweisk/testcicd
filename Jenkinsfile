@@ -58,7 +58,9 @@ pipeline{
                 dir("${env.WORKSPACE}"){
                     sh """
 #                    docker build . -t test:$build_number -f /root/argo-cd-hello-world-app-master/test.dockerfile
-                    
+                    testImage.inside {
+                     sh 'make test'
+                    }
                     
                     """
                 }
