@@ -8,8 +8,7 @@ pipeline{
     environment {
         PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin"
         GIT_VERSION="latest"
-        def dockerfile = 'test.dockerfile'
- //       def testImage = docker.build("test:${env.BUILD_ID}", "/root/argo-cd-hello-world-app-master/")
+
     }
     
     parameters {
@@ -54,7 +53,8 @@ pipeline{
         }
         stage("go build and img"){
             steps{
-
+        def dockerfile = 'test.dockerfile'
+        def testImage = docker.build("test:${env.BUILD_ID}", "/root/argo-cd-hello-world-app-master/")
                 dir("${env.WORKSPACE}"){
                     sh """
                    testImage.inside {
