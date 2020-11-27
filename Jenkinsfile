@@ -75,6 +75,15 @@ pipeline{
                 }
             }
         }
+        stage("deploy"){
+            steps{
+                dir("${env.WORKSPACE}"){
+            sh '''
+            cd /root/argocd/hello && kustomize edit set image 643690352380.dkr.ecr.us-east-1.amazonaws.com/hello:$BUILD_NUMBER && 	git pull && git commit -am "bugfix" && git push
+            '''
+                }
+            }
+        }
     }
     post {
         always {
