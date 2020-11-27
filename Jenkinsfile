@@ -51,8 +51,7 @@ pipeline{
             steps{
                 dir("${env.WORKSPACE}"){
                     sh """
-                    export GIT_VERSION=$(git rev-parse HEAD)
-                    docker build . -t test:$GIT_VERSION -f /root/argo-cd-hello-world-app-master/test.dockerfile
+                    docker build . -t test:$(git rev-parse HEAD) -f /root/argo-cd-hello-world-app-master/test.dockerfile
                     """
                 }
             }
