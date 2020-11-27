@@ -54,8 +54,8 @@ pipeline{
         stage("go build and img"){
             steps{
                 dir("${env.WORKSPACE}"){
-                    script {
-                        docker.build("test:${env.BUILD_ID}", "-f /root/argo-cd-hello-world-app-master/test.dockerfile","--target prod")
+                script {
+                    docker.build("test:${env.BUILD_ID}", "/root/argo-cd-hello-world-app-master/","--target prod")
                 }
 //           sh '''
 //           docker build . -t test:latest -f /root/argo-cd-hello-world-app-master/test.dockerfile
