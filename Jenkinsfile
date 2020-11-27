@@ -12,7 +12,7 @@ pipeline{
     
     parameters {
         choice(
-            choices: 'dev\nprod',
+            choices: 'dev\n\uat\fat\prod',
             description: 'choose deploy environment',
             name: 'deploy_env'
         )
