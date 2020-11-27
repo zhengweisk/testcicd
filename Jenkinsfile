@@ -1,9 +1,12 @@
 #!groovy
 
 pipeline{
+    
     agent {
     node {label 'master'}
+
     docker { image 'node:7-alpine' }
+
     }
 
     environment {

@@ -3,9 +3,7 @@
 pipeline{
     
     agent {
-    node {label 'master'}
     docker { image 'node:7-alpine' }
-
     }
 
     environment {
@@ -13,8 +11,7 @@ pipeline{
         GIT_VERSION="latest"
     }
     
-    
-        stage("go build"){
+    stage("go"){
             steps{
                 dir("${env.WORKSPACE}"){
                     sh """
