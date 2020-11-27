@@ -59,9 +59,9 @@ pipeline{
                     sh """
 #                    docker build . -t test:$build_number -f /root/argo-cd-hello-world-app-master/test.dockerfile
                      testImage = docker.build("test:${env.BUILD_ID}", "/root/argo-cd-hello-world-app-master/")   
-                    testImage.inside {
-                     sh 'make test'
-                    }
+#                    testImage.inside {
+#                     sh 'make test'
+#                    }
                     
                     """
                 }
