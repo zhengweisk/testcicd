@@ -84,7 +84,7 @@ pipeline{
                 }
             }
         }
-        state('dingding'){
+        stage('dingding'){
             steps{
                 echo "dingtalk message!"
             }
