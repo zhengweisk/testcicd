@@ -84,6 +84,26 @@ pipeline{
                 }
             }
         }
+        state('dingding'){
+            steps{
+                echo "dingtalk message!"
+            }
+        post {
+                success {
+                    dingtalk (
+                        robot: '88957073-86ff-4bc5-a4c9-c73ce1229ed0',
+                        type: 'TEXT',
+                        text: [
+                            '发布成功',
+                            '分行显示，哈哈哈哈'
+                        ],
+                        at: [
+                            '17702832673'
+                        ]
+                    )
+                }
+            }          
+        }
     }
     post {
         always {
